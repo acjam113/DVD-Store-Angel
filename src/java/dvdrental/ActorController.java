@@ -20,7 +20,7 @@ public class ActorController implements Serializable {
     String lastName;
     String response;
     
-    // this is our class that uses Hibernate to query the actor tabke
+    // this is our class that uses Hibernate to query the actor table
     ActorHelper helper;
     
     // this is our Actor POJO
@@ -41,13 +41,15 @@ public class ActorController implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getlName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setlName(String lName) {
-        this.lastName = lName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
+
+    
 
     public String getResponse() {
         
@@ -64,13 +66,14 @@ public class ActorController implements Serializable {
                 // insert was successful
                 firstName = null;
                 lastName = null;
-                response = "Actor Not Added.";
+                response = "Actor Added.";
                 return response;
             }else{
                 // insert failed
                 firstName = null;
                 lastName = null;
                 response = "Actor Not Added.";
+                return response;
             }
         }else{
             // don't display a message when the user hasn't input
@@ -78,7 +81,6 @@ public class ActorController implements Serializable {
             response = " ";      
             return response; 
         }
-    
     }
 
     public void setResponse(String response) {

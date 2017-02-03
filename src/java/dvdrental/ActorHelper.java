@@ -26,16 +26,18 @@ public class ActorHelper {
         int result = 0;
         
         // create SQL statement as a String
-        // :fName, :update are placeholders for actual values
+        // :fName, :lName, :update are placeholders for actual values
         String sql = "insert into actor(first_name, last_name, last_update)"
-                + "values (:fName, :update)";
+                + "values (:fName, :lName, :update)";
         
         try{
             // starting a transaction if one isn't active
             if(!this.session.getTransaction().isActive()){
-                
+                session.beginTransaction();
+            }
                 // creating an actual query that can be executed
                 SQLQuery q = session.createSQLQuery(sql);
+                
                 // associating our Actor POJO and table with a query
                 q.addEntity(Actor.class);
                 
@@ -49,7 +51,7 @@ public class ActorHelper {
                 
                 // commiting the query to the database
                 session.getTransaction().commit();
-            }
+            
         }catch (Exception e){
             e.printStackTrace();
         }
