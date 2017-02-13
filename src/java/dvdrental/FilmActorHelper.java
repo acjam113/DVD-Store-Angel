@@ -57,7 +57,7 @@ public class FilmActorHelper {
         
         List<Category> categoryList = null;
         
-        String sql = "select * from catagory";
+        String sql = "select * from category";
         
         try{
             if(!this.session.getTransaction().isActive()){
